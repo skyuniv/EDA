@@ -14,22 +14,24 @@ BEGIN
 	PROCESS(CLK,UPDOWN,CLEAR,DATA)
 	BEGIN
 		 IF CLEAR = '1'THEN
+		   IF rising_edge(CLK) THEN
 		    IF UPDOWN = '1'THEN
-			 		  IF DATA = "1110" THEN
-	              DATA <= "0000";
-		           ELSE 
-			        DATA <=DATA+1;	
-                 END IF;					  
-			 ELSIF UPDOWN = '0'THEN
-			        IF DATA = "0000" THEN
-	              DATA <= "1110";
-		           ELSE 
-			        DATA <=DATA-1;	
-				     END IF;
-			 ELSE NULL;
-			 END IF;
-		 ELSIF CLEAR'EVENT AND CLEAR = '1'THEN
-		 DATA <="0000";
+			 IF DATA = "1110" THEN
+	                       DATA <= "0000";
+		          ELSE 
+			       DATA <=DATA+1;	
+                          END IF;					  
+		    ELSIF UPDOWN = '0'THEN
+			  IF DATA = "0000" THEN
+	                       DATA <= "1110";
+		          ELSE 
+			       DATA <=DATA-1;	
+			  END IF;
+		    ELSE NULL;
+		    END IF;
+		    END IF;
+		 ELSE
+		 DATA <= (others =>'0');
 		 END IF;
 	  END PROCESS;
 END one;
