@@ -30,7 +30,7 @@ BEGIN
 			 DATA <= DATA;
 		    END IF;
 		 ELSIF 
-		 DATA <="0000";
+		 DATA <= (others =>'0');
 		 END IF;
 		 END IF;
 	  END PROCESS;
