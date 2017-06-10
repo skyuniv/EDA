@@ -16,14 +16,14 @@ BEGIN
 	BEGIN
 		 IF CLEAR = '1'THEN
 		    IF EN = '1'THEN
-		       IF DATA ="0000" THEN
-			        DATA <=DATA+1;
-					  CO<='0';
-				 ELSIF DATA = "1010" THEN
-	              DATA <= "0000";
-			        CO<='1';
-				 ELSE
-				     DATA<="0000";
+		       IF DATA ="1010" THEN
+			        DATA <="0000";
+				CO<='1';
+			ELSIF DATA <10 THEN
+	                        DATA <= DATA +1;
+			        CO<='0';
+			ELSE
+				 DATA<="0000";
 				 END IF;
 			  ELSIF EN = '0' THEN
 			     DATA <= DATA;
