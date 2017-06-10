@@ -26,12 +26,12 @@ BEGIN
 			ELSE
 				 DATA<="0000";
 				 END IF;
+				 END IF;
 		    ELSE EN = '0' THEN
 			 DATA <= DATA;
 		    END IF;
 		 ELSIF 
 		 DATA <= (others =>'0');
-		 END IF;
 		 END IF;
 	  END PROCESS;
 END one;
