@@ -30,7 +30,7 @@ BEGIN
 		    ELSE EN = '0' THEN
 			 DATA <= DATA;
 		    END IF;
-		 ELSIF 
+		 ELSE 
 		 DATA <= (others =>'0');
 		 END IF;
 	  END PROCESS;
