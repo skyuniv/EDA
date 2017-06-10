@@ -19,7 +19,7 @@ BEGIN
 		       IF DATA ="1010" THEN
 			        DATA <="0000";
 				CO<='1';
-			ELSIF DATA <10 THEN
+			ELSIF DATA <9 THEN
 	                        DATA <= DATA +1;
 			        CO<='0';
 			ELSE
