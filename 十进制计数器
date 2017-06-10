@@ -15,6 +15,7 @@ BEGIN
 	PROCESS(CLK,EN,CLEAR)		
 	BEGIN
 		 IF CLEAR = '1'THEN
+		    IF rising_edge(CLK) THEN
 		    IF EN = '1'THEN
 		       IF DATA ="1010" THEN
 			        DATA <="0000";
@@ -25,9 +26,10 @@ BEGIN
 			ELSE
 				 DATA<="0000";
 				 END IF;
-			  ELSIF EN = '0' THEN
-			     DATA <= DATA;
-		 ELSIF CLEAR'EVENT AND CLEAR = '1'THEN
+		    ELSE EN = '0' THEN
+			 DATA <= DATA;
+		    END IF;
+		 ELSIF 
 		 DATA <="0000";
 		 END IF;
 		 END IF;
