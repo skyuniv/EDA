@@ -38,3 +38,4 @@ END one;
 VHDL error at <location>: can't infer register for signal "<name>" because signal does not hold its value outside clock edge
 不过我做错时ID不是这个，照 http://quartushelp.altera.com/14.0/mergedProjects/msgs/msgs.htm#msgs/evrfx_vhdl_is_not_synthesizable_since_it_does_not_hold_its_value.htm 修改后就没问题了
 过后在重新看看吧
+主要原因是要是用IF判断上升沿或下降沿则不能用ELSE否则会造成锁存器什么的（网速太慢不能用谷歌翻译）
