@@ -14,7 +14,9 @@ BEGIN
 	PROCESS(CLK,EN,CLEAR,DATA）这里我添加了DATA	
 	BEGIN
 		 IF CLEAR = '1'THEN
+		    IF rising_edge(CLK) THEN
 		    IF EN = '1'THEN
+		    
 		       IF DATA ="111010" THEN
 			        DATA <="000000";
 		       ELSIF DATA < 60 THEN
@@ -24,11 +26,12 @@ BEGIN
 				       这个设定在10和12计数器里都是相同的
 				DATA<="000000";
 			END IF;
+			END IF;
 			  ELSIF EN = '0' THEN
 			     DATA <= DATA;
 			  END IF;
-		 ELSIF CLEAR'EVENT AND CLEAR = '1'THEN
-		 DATA <="000000";
+		 ELSE
+		  DATA <= (others =>'0');
 		 END IF;
 	  END PROCESS;
 END one;
