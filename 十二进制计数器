@@ -4,7 +4,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 ENTITY cnt12 IS
 PORT(
 CLK,CLEAR,EN :IN STD_LOGIC;
-DATA : BUFFER STD_LOGIC_VECTOR(3 DOWNTO 0);
+DATA : BUFFER STD_LOGIC_VECTOR(3 DOWNTO 0)
 );
 END cnt12;   
 
@@ -12,3 +12,26 @@ ARCHITECTURE one OF cnt12 IS
 BEGIN
 	PROCESS(CLK,EN,CLEAR)		
 	BEGIN
+	     IF CLEAR = '1'THEN
+		    IF EN = '1'THEN
+		       IF DATA ="0000" THEN
+			        DATA <=DATA+1;
+				 ELSIF DATA = "1100" THEN
+	              DATA <= "0000";
+			        
+				 ELSE
+				     DATA<="0000";
+				 END IF;
+			  ELSIF EN = '0' THEN
+			     DATA <= DATA;
+	     ELSIF CLEAR'EVENT AND CLEAR = '1'THEN
+	     DATA <="0000";
+		 END IF;
+		 END IF;
+	  END PROCESS;
+END one;
+
+这里有ID是10492的警告，说要把反馈DATA也放到PROCESS里
+解释在这里
+http://quartushelp.altera.com/14.0/mergedProjects/msgs/msgs.htm#msgs/evrfx_vhdl_is_not_synthesizable_since_it_does_not_hold_its_value.htm
+我把DATA当作敏感信号后，10492警告就消失了。可我听课的时候记得老师说过，输出是不能当作敏感信号的啊 :)
