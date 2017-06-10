@@ -36,5 +36,5 @@ END one;
 
 要把CLEAR上升沿判断放在后面否则会报错，错误是
 VHDL error at <location>: can't infer register for signal "<name>" because signal does not hold its value outside clock edge
-不过我做错时ID不是这个，照 [这个网页](http://quartushelp.altera.com/14.0/mergedProjects/msgs/msgs.htm#msgs/evrfx_vhdl_is_not_synthesizable_since_it_does_not_hold_its_value.htm) 修改后就没问题了
+不过我做错时ID不是这个，照 http://quartushelp.altera.com/14.0/mergedProjects/msgs/msgs.htm#msgs/evrfx_vhdl_is_not_synthesizable_since_it_does_not_hold_its_value.htm 修改后就没问题了
 过后在重新看看吧
