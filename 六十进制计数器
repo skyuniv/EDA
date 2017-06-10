@@ -15,20 +15,20 @@ BEGIN
 	BEGIN
 		 IF CLEAR = '1'THEN
 		    IF EN = '1'THEN
-		       IF DATA ="000000" THEN
-			        DATA <=DATA+1;
-				 ELSIF DATA = "111010" THEN
-	              DATA <= "000000";
+		       IF DATA ="111010" THEN
+			        DATA <="000000";
+		       ELSIF DATA < 60 THEN
+	                        DATA <= DATA +1;
 			        
-				 ELSE  这里是设定如果DATA产生大于59的二进制数，那么就自动转到0（10进制，根据不同的二进制个数确定具体的0的个数）
+		       ELSE  这里是设定如果DATA产生大于59的二进制数，那么就自动转到0（10进制，根据不同的二进制个数确定具体的0的个数）
 				       这个设定在10和12计数器里都是相同的
-				     DATA<="000000";
-				 END IF;
+				DATA<="000000";
+			END IF;
 			  ELSIF EN = '0' THEN
 			     DATA <= DATA;
+			  END IF;
 		 ELSIF CLEAR'EVENT AND CLEAR = '1'THEN
 		 DATA <="000000";
-		 END IF;
 		 END IF;
 	  END PROCESS;
 END one;
