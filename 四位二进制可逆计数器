@@ -1,3 +1,38 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+ENTITY rever_coun4 IS
+PORT(
+CLK,CLEAR,UPDOWN :IN STD_LOGIC;
+DATA : BUFFER STD_LOGIC_VECTOR(3 DOWNTO 0)
+);
+END rever_coun4;
+
+ARCHITECTURE one OF rever_coun4 IS
+BEGIN
+	PROCESS(CLK,UPDOWN,CLEAR,DATA)
+	BEGIN
+		 IF CLEAR = '1'THEN
+		    IF UPDOWN = '1'THEN
+			 		  IF DATA = "1110" THEN
+	              DATA <= "0000";
+		           ELSE 
+			        DATA <=DATA+1;	
+                 END IF;					  
+			 ELSIF UPDOWN = '0'THEN
+			        IF DATA = "0000" THEN
+	              DATA <= "1110";
+		           ELSE 
+			        DATA <=DATA-1;	
+				     END IF;
+			 ELSE NULL;
+			 END IF;
+		 ELSIF CLEAR'EVENT AND CLEAR = '1'THEN
+		 DATA <="0000";
+		 END IF;
+	  END PROCESS;
+END one;
+
+做到这里发现我之前的有一些错误的地方。
+CLEAR信号无效后，我直接给DATA赋值0，这就导致我只有0和进位为1的情况
