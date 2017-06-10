@@ -38,7 +38,9 @@ IF CLEAR = '1'THEN
 
 缺少低电平和下降沿的情况，也许可以不考虑下降沿
 
-或许填上一句IF CLEAR = '1'THEN
+或许填上一句
+
+	IF CLEAR = '1'THEN
 
 但是感觉不大好。
 
@@ -51,7 +53,7 @@ IF CLEAR = '1'THEN
 
 照七进制的
 
-if falling_edge(clk) then
+	if falling_edge(clk) then
 
 	if cr='1' then
 	
