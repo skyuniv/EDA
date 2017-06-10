@@ -14,3 +14,27 @@ ARCHITECTURE one OF cnt10 IS
 BEGIN
 	PROCESS(CLK,EN,CLEAR)		
 	BEGIN
+		 IF CLEAR = '1'THEN
+		    IF EN = '1'THEN
+		       IF DATA ="0000" THEN
+			        DATA <=DATA+1;
+					  CO<='0';
+				 ELSIF DATA = "1010" THEN
+	              DATA <= "0000";
+			        CO<='1';
+				 ELSE
+				     DATA<="0000";
+				 END IF;
+			  ELSIF EN = '0' THEN
+			     DATA <= DATA;
+		 ELSIF CLEAR'EVENT AND CLEAR = '1'THEN
+		 DATA <="0000";
+		 END IF;
+		 END IF;
+	  END PROCESS;
+END one;
+
+要把CLEAR上升沿判断放在后面否则会报错，错误是
+VHDL error at <location>: can't infer register for signal "<name>" because signal does not hold its value outside clock edge
+不过我做错时ID不是这个，照 [这个网页](http://quartushelp.altera.com/14.0/mergedProjects/msgs/msgs.htm#msgs/evrfx_vhdl_is_not_synthesizable_since_it_does_not_hold_its_value.htm) 修改后就没问题了
+过后在重新看看吧
