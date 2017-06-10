@@ -35,4 +35,12 @@ BEGIN
 END one;
 
 做到这里发现我之前的有一些错误的地方。
-CLEAR信号无效后，我直接给DATA赋值0，这就导致我只有0和进位为1的情况
+CLEAR信号无效后，我直接给DATA赋值0，这就导致我只有0和进位为1的情况，错误代码如下
+IF CLEAR = '1'THEN
+		    IF EN = '1'THEN
+		       IF DATA ="0000" THEN
+			        DATA <=DATA+1;
+					  CO<='0';
+				 ELSIF DATA = "1010" THEN
+	              DATA <= "0000";
+			        CO<='1';
