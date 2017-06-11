@@ -6,7 +6,7 @@ ENTITY cnt10 IS
 PORT(
 CLK,CLEAR,EN :IN STD_LOGIC;
 DATA : BUFFER STD_LOGIC_VECTOR(3 DOWNTO 0);
-CO: STD_LOGIC
+CO: OUT STD_LOGIC
 );
 END cnt10;
 
@@ -27,7 +27,7 @@ BEGIN
 				 DATA<="0000";
 				 END IF;
 				 END IF;
-		    ELSE EN = '0' THEN
+		    ELSE 
 			 DATA <= DATA;
 		    END IF;
 		 ELSE 
