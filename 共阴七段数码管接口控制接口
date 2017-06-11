@@ -1,5 +1,4 @@
-#高电平有效驱动输出驱动一个共阴极LED显示器
-
+#高电平有效驱动输出驱动一个共阴极LED显示器   
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
