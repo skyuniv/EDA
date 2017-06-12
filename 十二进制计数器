@@ -13,9 +13,9 @@ BEGIN
 	PROCESS(CLK,EN,CLEAR)		
 	BEGIN
 	     IF CLEAR = '1'THEN
-	     IF rising_edge(CLK) THEN
+	     IF falling_edge(CLK) THEN
 		    IF EN = '1'THEN
-		       IF DATA ="1100" THEN
+		       IF DATA ="1011" THEN
 			        DATA <="0000";
 		       ELSIF DATA < 11 THEN
 	                        DATA <= DATA +1;
