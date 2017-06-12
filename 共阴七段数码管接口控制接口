@@ -71,3 +71,4 @@ BEGIN
 		END IF;
 END PROCESS;
 END one;
+还有一个错误没有解决。
