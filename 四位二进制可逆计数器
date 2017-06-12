@@ -16,14 +16,14 @@ BEGIN
 		 IF CLEAR = '1'THEN
 		   IF rising_edge(CLK) THEN
 		    IF UPDOWN = '1'THEN
-			 IF DATA = "1110" THEN
+			 IF DATA = "1111" THEN
 	                       DATA <= "0000";
 		          ELSE 
 			       DATA <=DATA+1;	
                           END IF;					  
 		    ELSIF UPDOWN = '0'THEN
 			  IF DATA = "0000" THEN
-	                       DATA <= "1110";
+	                       DATA <= "1111";
 		          ELSE 
 			       DATA <=DATA-1;	
 			  END IF;
