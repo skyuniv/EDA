@@ -14,7 +14,7 @@ BEGIN
 	PROCESS(CLK,UPDOWN,CLEAR,DATA)
 	BEGIN
 		 IF CLEAR = '1'THEN
-		   IF rising_edge(CLK) THEN
+		   IF falling_edge(CLK) THEN
 		    IF UPDOWN = '1'THEN
 			 IF DATA = "1111" THEN
 	                       DATA <= "0000";
