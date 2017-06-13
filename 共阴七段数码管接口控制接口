@@ -1,7 +1,6 @@
 #高电平有效驱动输出驱动一个共阴极LED显示器   
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
-USE IEEE.STD_LOGIC_UNSIGNED.ALL ;
 USE IEEE.STD_LOGIC_SIGNED.ALL;
 use ieee.std_logic_arith.all;
 
@@ -15,60 +14,67 @@ DIG1 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
 END ssd;
 
 ARCHITECTURE one OF ssd IS
-BEGIN
+begin
 PROCESS(CLEAR)
 VARIABLE num: INTEGER RANGE 0 TO 100;
 BEGIN
     IF CLEAR = '1' THEN
-				   num <=CONV_INTEGER(DIN);
-					IF (num/10 =0)THEN
-					    DIG1<="1111110";
-					IF (num/10 =1)THEN
-					    DIG1<="0110000";
-					IF (num/10 =2)THEN
-					    DIG1<="1101101";
-					IF (num/10 =3)THEN
-					    DIG1<="1111001";
-					IF (num/10 =4)THEN
-					    DIG1<="0110011";
-					IF (num/10 =5)THEN
-					    DIG1<="1011011";
-					IF (num/10 =6)THEN
-					    DIG1<="1011111";
-					IF (num/10 =7)THEN
-					    DIG1<="1110000";
-					IF (num/10 =8)THEN
-					    DIG1<="1111111";
-					IF (num/10 =9)THEN
-					    DIG1<="1110011";
-					IF (num -10*(num/10) = 0)THEN
-					    DIG2 <="1111110";
-					IF (num -10*(num/10) = 1)THEN
-					    DIG2 <="0110000";
-					IF (num -10*(num/10) = 2)THEN
-					   DIG2 <="1101101";
-					IF (num -10*(num/10) = 3)THEN
-					    DIG2 <="1111001";
-					IF (num -10*(num/10) = 4)THEN
-					    DIG2 <="0110011";
-					IF (num -10*(num/10) = 5)THEN
-					    DIG2 <="1011011";
-					IF (num -10*(num/10) = 6)THEN
-					   DIG2 <="1011111";
-					IF (num -10*(num/10) = 7)THEN
-					    DIG2 <="1110000";
-					IF (num -10*(num/10) = 8)THEN
-					    DIG2 <="1111111";
-					ELSIF (num -10*(num/10) = 9)THEN
-					   DIG2 <="1110011";
-					ELSE 
-					DIG1 <="1111110";
-			      DIG2 <="1111110";
-					END IF;
-		ELSE
-		    DIG1 <="1111110";
-			 DIG2 <="1111110";
-		END IF;
-END PROCESS;
+				num :=CONV_INTEGER(DIN);
+				CASE (num/10) IS 
+					
+					WHEN 0 =>DIG1<="1111110";
+				
+					WHEN 1=>	DIG1<="0110000";
+					
+					WHEN 2=>	DIG1<="1101101";
+					
+					WHEN 3=>	DIG1<="1111001";
+					
+					WHEN 4=>	DIG1<="0110011";
+					
+				   WHEN 5=>	DIG1<="1011011";
+					
+				   WHEN 6=>	DIG1<="1011111";
+					
+				   WHEN 7=>	DIG1<="1110000";
+					
+				   WHEN 8=>	DIG1<="1111111";
+					
+				   WHEN 9=>	DIG1<="1110011";
+				   WHEN OTHERS =>NULL;	
+            END CASE;
+				
+				CASE (num -10*(num/10)) IS
+					
+		
+					
+					    WHEN 0 =>DIG2 <="1111110";
+					
+					    WHEN 1 =>DIG2 <="0110000";
+					
+					    WHEN 2 =>DIG2 <="1101101";
+					
+					    WHEN 3 =>DIG2 <="1111001";
+					
+					    WHEN 4 =>DIG2 <="0110011";
+					
+					    WHEN 5 =>DIG2 <="1011011";
+					
+					    WHEN 6 =>DIG2 <="1011111";
+					
+					    WHEN 7 =>DIG2 <="1110000";
+					
+					    WHEN 8 =>DIG2 <="1111111";
+					
+					    WHEN 9 =>DIG2 <="1110011";
+					    WHEN OTHERS =>NULL;	
+            END CASE;
+			ELSE
+			 DIG1<="0110000";
+		    DIG2 <="1111110";
+			 end if;
+			 end process;
+
 END one;
-还有一个错误没有解决。
+还有一个错误没有解决。解决了。
+URL: http://bbs.csdn.net/topics/380158758
